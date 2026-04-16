@@ -1,4 +1,4 @@
-package mihon.core.firebase
+package mihon.core
 
 import android.content.Context
 
@@ -8,4 +8,8 @@ object FirebaseConfig {
     fun setAnalyticsEnabled(enabled: Boolean) = Unit
 
     fun setCrashlyticsEnabled(enabled: Boolean) = Unit
+
+    fun log(message: String) = Unit
+
+    fun setUserProperty(name: String, value: String) = Unit
 }
