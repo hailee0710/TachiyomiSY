@@ -1,4 +1,4 @@
-package mihon.core.firebase
+package mihon.core
 
 import android.content.Context
 import com.google.firebase.FirebaseApp
@@ -10,16 +10,36 @@ object FirebaseConfig {
     private lateinit var crashlytics: FirebaseCrashlytics
 
     fun init(context: Context) {
-        analytics = FirebaseAnalytics.getInstance(context)
-        FirebaseApp.initializeApp(context)
-        crashlytics = FirebaseCrashlytics.getInstance()
+        try {
+            FirebaseApp.initializeApp(context)
+            analytics = FirebaseAnalytics.getInstance(context)
+            crashlytics = FirebaseCrashlytics.getInstance()
+        } catch (e: Exception) {
+            // Ignore
+        }
     }
 
     fun setAnalyticsEnabled(enabled: Boolean) {
-        analytics.setAnalyticsCollectionEnabled(enabled)
+        if (::analytics.isInitialized) {
+            analytics.setAnalyticsCollectionEnabled(enabled)
+        }
     }
 
     fun setCrashlyticsEnabled(enabled: Boolean) {
-        crashlytics.isCrashlyticsCollectionEnabled = enabled
+        if (::crashlytics.isInitialized) {
+            crashlytics.isCrashlyticsCollectionEnabled = enabled
+        }
+    }
+
+    fun log(message: String) {
+        if (::crashlytics.isInitialized) {
+            crashlytics.log(message)
+        }
+    }
+
+    fun setUserProperty(name: String, value: String) {
+        if (::analytics.isInitialized) {
+            analytics.setUserProperty(name, value)
+        }
     }
 }

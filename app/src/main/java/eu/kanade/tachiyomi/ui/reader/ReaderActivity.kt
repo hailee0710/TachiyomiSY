@@ -27,6 +27,7 @@ import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.statusBarsPadding
 import androidx.compose.material3.AlertDialog
 import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Text
@@ -62,6 +63,7 @@ import eu.kanade.presentation.reader.OrientationSelectDialog
 import eu.kanade.presentation.reader.ReaderContentOverlay
 import eu.kanade.presentation.reader.ReaderPageActionsDialog
 import eu.kanade.presentation.reader.ReaderPageIndicator
+import eu.kanade.presentation.reader.ReaderTopBar
 import eu.kanade.presentation.reader.ReadingModeSelectDialog
 import eu.kanade.presentation.reader.appbars.NavBarType
 import eu.kanade.presentation.reader.appbars.ReaderAppBars
@@ -305,6 +307,7 @@ class ReaderActivity : BaseActivity() {
     private fun ReaderActivityBinding.setComposeOverlay(): Unit = composeOverlay.setComposeContent {
         val state by viewModel.state.collectAsState()
         val showPageNumber by readerPreferences.showPageNumber.collectAsState()
+        val isFullscreen by readerPreferences.fullscreen.collectAsState()
         val settingsScreenModel = remember {
             ReaderSettingsScreenModel(
                 readerState = viewModel.state,
@@ -314,6 +317,16 @@ class ReaderActivity : BaseActivity() {
         }
 
         Box(modifier = Modifier.fillMaxSize()) {
+            if (!state.menuVisible && isFullscreen) {
+                ReaderTopBar(
+                    state = state,
+                    chapters = viewModel.getChapters(),
+                    modifier = Modifier
+                        .align(Alignment.TopCenter)
+                        .statusBarsPadding(),
+                )
+            }
+
             if (!state.menuVisible && showPageNumber) {
                 ReaderPageIndicator(
                     currentPage = state.currentPage,
