@@ -538,13 +538,6 @@ class MainActivity : BaseActivity() {
     }
 
     // SY removed: addAnalytics (Firebase disabled)
-    /*
-    private fun addAnalytics() {
-        if (!BuildConfig.DEBUG && isPreviewBuildType) {
-            FirebaseConfig.setUserProperty("preview_version", syDebugVersion)
-        }
-    }
-     */
 
     companion object {
         const val INTENT_SEARCH = "eu.kanade.tachiyomi.SEARCH"

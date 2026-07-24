@@ -336,11 +336,6 @@ class App : Application(), DefaultLifecycleObserver, SingletonImageLoader.Factor
         }
 
         // SY removed: CrashlyticsPrinter (Firebase disabled)
-        /*
-        if (!BuildConfig.DEBUG) {
-            printers += CrashlyticsPrinter(LogLevel.ERROR)
-        }
-          */
 
         XLog.init(
             logConfig,
