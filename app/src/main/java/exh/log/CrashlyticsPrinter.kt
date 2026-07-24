@@ -2,7 +2,7 @@ package exh.log
 
 import com.elvishew.xlog.printer.Printer
 import eu.kanade.tachiyomi.BuildConfig
-import mihon.core.FirebaseConfig
+import mihon.core.firebase.FirebaseConfig
 
 class CrashlyticsPrinter(private val logLevel: Int) : Printer {
     /**
