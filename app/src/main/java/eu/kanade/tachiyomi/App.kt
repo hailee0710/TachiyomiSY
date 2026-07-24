@@ -340,7 +340,7 @@ class App : Application(), DefaultLifecycleObserver, SingletonImageLoader.Factor
         if (!BuildConfig.DEBUG) {
             printers += CrashlyticsPrinter(LogLevel.ERROR)
         }
-        */
+          */
 
         XLog.init(
             logConfig,

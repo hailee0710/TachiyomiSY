@@ -544,7 +544,7 @@ class MainActivity : BaseActivity() {
             FirebaseConfig.setUserProperty("preview_version", syDebugVersion)
         }
     }
-    */
+     */
 
     companion object {
         const val INTENT_SEARCH = "eu.kanade.tachiyomi.SEARCH"
