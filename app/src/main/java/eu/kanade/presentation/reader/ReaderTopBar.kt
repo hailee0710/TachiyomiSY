@@ -107,7 +107,7 @@ fun ReaderTopBar(
         // Right Info (Battery & Time)
         Row(
             modifier = Modifier.align(Alignment.CenterEnd),
-            verticalAlignment = Alignment.CenterVertically
+            verticalAlignment = Alignment.CenterVertically,
         ) {
             var timeText by remember {
                 mutableStateOf(android.text.format.DateFormat.format("HH:mm", java.util.Calendar.getInstance()).toString())
