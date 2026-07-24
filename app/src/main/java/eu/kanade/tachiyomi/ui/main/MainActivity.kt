@@ -100,7 +100,6 @@ import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.launch
 import logcat.LogPriority
-import mihon.core.firebase.FirebaseConfig
 import mihon.core.migration.Migrator
 import tachiyomi.core.common.Constants
 import tachiyomi.core.common.util.lang.launchIO
@@ -165,7 +164,6 @@ class MainActivity : BaseActivity() {
         super.onCreate(savedInstanceState)
 
         val didMigration = if (isLaunch) {
-            addAnalytics()
             Migrator.awaitAndRelease()
         } else {
             false
@@ -539,13 +537,14 @@ class MainActivity : BaseActivity() {
             (scheme == "mihon" && data?.host == "extension-store")
     }
 
-    // SY -->
+    // SY removed: addAnalytics (Firebase disabled)
+    /*
     private fun addAnalytics() {
         if (!BuildConfig.DEBUG && isPreviewBuildType) {
             FirebaseConfig.setUserProperty("preview_version", syDebugVersion)
         }
     }
-    // SY <--
+    */
 
     companion object {
         const val INTENT_SEARCH = "eu.kanade.tachiyomi.SEARCH"
