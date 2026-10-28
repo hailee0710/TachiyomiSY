@@ -2,6 +2,9 @@ package mihon.core
 
 import android.content.Context
 
+/**
+ * SY-specific file
+ */
 object FirebaseConfig {
     fun init(context: Context) = Unit
 
@@ -12,4 +15,6 @@ object FirebaseConfig {
     fun log(message: String) = Unit
 
     fun setUserProperty(name: String, value: String) = Unit
+
+    fun recordException(throwable: Throwable) = Unit
 }
