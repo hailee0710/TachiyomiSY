@@ -1,4 +1,4 @@
-package mihon.core
+package mihon.core.firebase
 
 import android.content.Context
 
